@@ -9,17 +9,17 @@ from django.contrib.auth.models import User
 
 
 class user_profile(models.Model):
-    user=models.OneToOneField(User,on_delete=CASCADE,default=0)
-    user_id = models.AutoField
+    user=models.OneToOneField(User,on_delete=models.CASCADE,default=0)
+    id = models.AutoField(primary_key=True)
     fullname = models.CharField(max_length=200)
     email = models.EmailField()
-    image = models.ImageField(upload_to ='expimg/')
+    image = models.ImageField(upload_to ='expimg/',null=True,blank=True)
     gender = models.CharField(max_length=10)
-    branch = models.CharField(max_length=20)
-    intrests = models.CharField()
+    branch = models.CharField(max_length=20,null=True,blank=True)
+    # intrests = models.CharField()
     # synergy = models.CharField()
     want_synergy=models.BooleanField()
-    collage=models.CharField()
+    collage=models.CharField(max_length=200)
     about = models.CharField(max_length=2000)
 
 
