@@ -1,5 +1,6 @@
 import email
 from operator import le
+from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -7,8 +8,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class user(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class user_profile(models.Model):
+    user=models.OneToOneField(User,on_delete=CASCADE,default=0)
     user_id = models.AutoField
     fullname = models.CharField(max_length=200)
     email = models.EmailField()
