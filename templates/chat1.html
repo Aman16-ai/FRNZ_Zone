@@ -24,16 +24,25 @@
       } */
       
     @media only screen and (max-width: 600px) {
-        .mob-chat{
-          display: none;
+      .mob-chat{
+        display: none;
       }
-      /* body{
-          height: 100% !important;
-      } */
+      .user_status{
+        display: none;
+      }
       .contacts{
         height: 85vh !important;
       }
     }
+    /* @media (max-width: 768px) {
+      .mob-chat{
+        display: none;
+      }
+      .contacts{
+        height: 88vh !important;
+      }
+
+    } */
   </style>
   <script>
     function scrollDown() {
@@ -72,7 +81,7 @@
                           </div>
                         </div>
       
-                        <div class="col-sm-12 border border-light contacts" data-mdb-perfect-scrollbar="true" style=" overflow-x: scroll; position: relative; height: 83vh">
+                        <div class="col-sm-12 border border-light contacts" data-mdb-perfect-scrollbar="true" style=" overflow-x: scroll; position: relative; height: 83vh;background-color: #0d1e45;">
                           <ul class="list-unstyled mb-0">
                             <li class="p-2 border-bottom">
                               <a href="#!" class="d-flex justify-content-between">
@@ -268,7 +277,7 @@
                             </li>
                           </ul>
                         </div>
-                        <div class="row text-center">
+                        <div class="row text-center user_status">
                           <div class="col-4">
                             <a href=""><i class="fas fa-user text-white fa-2x p-2"></i></a>
                           </div>
