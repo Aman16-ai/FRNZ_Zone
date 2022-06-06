@@ -12,6 +12,9 @@ def home(request):
 def chat(request):
     return render(request,"chat.html")
 
+def register(request):
+    return render(request,"register.html")
+
 def create_user(request):
 
 
