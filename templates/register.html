@@ -20,15 +20,20 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="form-structor">
-                    <div class="signup">
-                        <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-                        <div class="form-holder">
-                            <input type="text" class="input p-2 m-2" placeholder="Name" />
-                            <input type="email" class="input p-2 m-2" placeholder="Email" />
-                            <input type="password" class="input p-2 m-2" placeholder="Password" />
+                    <form action="/handleSignup" method="post">
+                        {% csrf_token %}
+                        <div class="signup">
+                            <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
+                            <div class="form-holder">
+                                <input type="text" class="input p-2 m-2" name="Firstname" placeholder="Firstname" />
+                                <input type="text" class="input p-2 m-2" name="Lastname" placeholder="Lastname" />
+                                <input type="text" class="input p-2 m-2" name="Username" placeholder="Username" />
+                                <input type="email" class="input p-2 m-2" name="Email" placeholder="Email" />
+                                <input type="password" class="input p-2 m-2" name="Password" placeholder="Password" />
+                            </div>
+                            <button class="submit-btn">Sign up</button>
                         </div>
-                        <button class="submit-btn">Sign up</button>
-                    </div>
+                    </form>
                     <div class="login slide-up">
                         <div class="center">
                             <h2 class="form-title" id="login"><span>or</span>Log in</h2>
