@@ -10,7 +10,7 @@ def home(request):
     return render(request,"index.html")
 
 def chat(request):
-    return render(request,"chat1.html")
+    return render(request,"chat.html")
 
 def create_user(request):
 
