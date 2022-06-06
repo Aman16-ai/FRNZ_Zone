@@ -18,7 +18,7 @@
   <title>Document</title>
 </head>
 
-<body>
+<body onload="scrollDown()">
   <div class="container-fluid">
     <div class="row text-center">
       <div class="col-sm-4 col-md-4" style="height: 100vh;background: #7F7FD5;">
@@ -640,7 +640,7 @@
     .action_menu {
       z-index: 1;
       position: absolute;
-      padding: 15px 0;
+      /* padding: 15px 0; */
       background-color: white;
       color: white;
       border-radius: 15px;
@@ -690,7 +690,13 @@
         // $('.action_menu').hide()
       });
     });
-
+    function scrollDown() {
+        // document.body.scrollTop = document.body.scrollHeight;
+        // window.location.hash = '#chats';
+        // window.scrollTo(0, document.querySelector("#chats").scrollTop);
+        document.getElementById('chats').scrollTop =  document.getElementById('chats').scrollHeight
+        console.log("cool")
+      }
   </script>
 </body>
 
