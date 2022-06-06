@@ -1,5 +1,8 @@
 import email
 import re
+from tkinter import E
+from urllib.request import HTTPRedirectHandler
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User, Group
@@ -15,28 +18,24 @@ def chat(request):
 def register(request):
     return render(request,"register.html")
 
-def create_user(request):
+def handleSignup(request):
 
-
-    try:
-        User.objects.get(username = request.POST.get('email').lower())
-    except:
-        pass
-        if request.method=='POST':
+        if request.method == 'POST':
+            print("called")
+            username = request.POST['Username']
+            firstname = request.POST['Firstname']
+            lastname = request.POST['Lastname']
+            email = request.POST['Email']
+            password = request.POST['Password']
             
-            #create all fields to create user 
-            name=request.POST.get('name')
-            email=request.POST.get('email')
-            password=request.POST.get('password')
-            gender=request.POST['gender']
-
-            # saving user to user models 
-            user = User.objects.create_user(first_name = name, last_name = request.POST['gender'], username = request.POST.get('email').lower())
-            user.set_password(request.POST.get('password'))
-            user.save()
-            return redirect('/')
-        
-        else:
-            print("Bad request")
+            try :
+                user = User.objects.create_user(username=username,email=email,password=password)
+                user.first_name = firstname
+                user.last_name = lastname
+                user.save()
+                return redirect("/")
+            except:
+                return HttpResponse("Registration failed")
+        return HttpResponse("Something went wrong")
 
 
