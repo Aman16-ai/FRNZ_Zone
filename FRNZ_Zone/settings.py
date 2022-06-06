@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Frnz_Accounts'
+    'Frnz_Accounts',
+    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -121,6 +122,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static') 
+
+STATICFILES_FINDERS = [
+    'compressor.finders.CompressorFinder',
+    # 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+]
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
