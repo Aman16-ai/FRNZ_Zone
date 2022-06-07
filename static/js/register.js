@@ -26,3 +26,25 @@ signupBtn.addEventListener('click', (e) => {
 		}
 	});
 });
+
+function validationHandler() {
+
+	let firstName = document.getElementById('firstNametxt').value;
+	let lastName = document.getElementById('lastNametxt').value;
+	let userName = document.getElementById('userNametxt').value;
+	let password = document.getElementById('passwordtxt').value;
+
+
+	if((firstName === '' || firstName === ' ') || (lastName === '' || lastName === ' ') || (userName === "" || userName === " ")) {
+		alert("please enter valid data")
+		return false;
+	}
+	else if(password.length < 5) {
+		alert("password must be greated than 5");
+		return false;
+	}
+	else {
+		return true
+	}
+	
+}
