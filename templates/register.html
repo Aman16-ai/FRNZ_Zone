@@ -16,17 +16,17 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12 col-sm-12 text-center">
-                <div class="form-structor" style="">
-                    <form action="/handleSignup" method="post">
+                <div class="form-structor" >
+                    <form action="/handleSignup" method="post" onsubmit="return validationHandler()">
                         {% csrf_token %}
                         <div class="signup">
                             <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
                             <div class="form-holder">
-                                <input type="text" class="input p-2 m-2" name="Firstname" placeholder="Firstname" />
-                                <input type="text" class="input p-2 m-2" name="Lastname" placeholder="Lastname" />
-                                <input type="text" class="input p-2 m-2" name="Username" placeholder="Username" />
+                                <input type="text" id="firstNametxt" class="input p-2 m-2" name="Firstname" placeholder="Firstname" />
+                                <input type="text" id="lastNametxt" class="input p-2 m-2" name="Lastname" placeholder="Lastname" />
+                                <input type="text" id="userNametxt" class="input p-2 m-2" name="Username" placeholder="Username" />
                                 <input type="email" class="input p-2 m-2" name="Email" placeholder="Email" />
-                                <input type="password" class="input p-2 m-2" name="Password" placeholder="Password" />
+                                <input type="password" id="passwordtxt" class="input p-2 m-2" name="Password" placeholder="Password" />
                             </div>
                             <button class="submit-btn">Sign up</button>
                         </div>

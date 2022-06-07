@@ -6,7 +6,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User, Group
-
+from .models import user_profile
 # Create your views here.
 
 def home(request):
@@ -21,7 +21,6 @@ def register(request):
 def handleSignup(request):
 
         if request.method == 'POST':
-            print("called")
             username = request.POST['Username']
             firstname = request.POST['Firstname']
             lastname = request.POST['Lastname']
@@ -32,8 +31,13 @@ def handleSignup(request):
                 user = User.objects.create_user(username=username,email=email,password=password)
                 user.first_name = firstname
                 user.last_name = lastname
-                user.save()
-                return redirect("/")
+                if user is not None:
+                    userProfile = user_profile(user = user,fullname = firstname+" "+lastname)
+                    userProfile.save()
+                    user.save()
+                    return redirect("/")
+                else:
+                    return HttpResponse("user not created")
             except:
                 return HttpResponse("Registration failed")
         return HttpResponse("Something went wrong")
