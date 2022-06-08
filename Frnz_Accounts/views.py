@@ -13,7 +13,7 @@ def home(request):
     return render(request,"index.html")
 
 def chat(request):
-    return render(request,"chat.html")
+    return render(request,"chat2.html")
 
 def register(request):
     return render(request,"register.html")

@@ -196,13 +196,38 @@
       </div>
       <div class=" col-md-4 mx-0 p-0 col-sm-4">
         <!-- <h2>search</h2> -->
-        <div class="input-group   p-3 bg-dark" style="height: 10vh !important;">
+        <!-- <div class="input-group   p-3 bg-dark" style="height: 10vh !important;">
           <input type="search" class="form-control rounded bg-transparent text-white" placeholder="Search"
             aria-label="Search" aria-describedby="action_menu_btn"
             style="color: white !important; font-size: larger;" />
           <span class="input-group-text text-black p-3 border-0 bg-transparent" id="action_menu_btn">
             <i class="fas fa-ellipsis-v  text-white " style="color:black"></i>
           </span>
+          <div class="action_menu ">
+            <ul>
+              <li><i class="fas fa-user-circle text-black"></i> View profile</li>
+              <li><i class="fas fa-users text-black"></i> Add to close friends</li>
+              <li><i class="fas fa-plus text-black"></i> Add to group</li>
+              <li><i class="fas fa-ban text-black"></i> Block</li>
+            </ul>
+          </div>
+        </div> -->
+        <div class="row mx-0 py-3  bg-dark text-center" style="height: 10vh !important;">
+          <div class="col-10 col-sm-10 text-center m-0">
+            <input type="search" class="form-control bg-transparent text-white border-0" placeholder="Search"
+          aria-label="Search" aria-describedby="action_menu_btn"
+          style="color: white !important; font-size: larger; box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);" />
+          </div>
+          <div class="col-1 col-sm-1 m-0 text-center">
+            <span class="input-group-text p-0 m-0 border-0 bg-transparent" id="action_menu_btn">
+              <i class="fas fa-ellipsis-v  text-white " style="color:black"></i>
+            </span>
+          </div>
+          <div class="col-1 col-sm-1 m-0 text-center">
+            <span class="input-group-text p-0 m-0 border-0 bg-transparent" id="action_menu_btn">
+              <i class="fas fa-ellipsis-v  text-white " style="color:black"></i>
+            </span>
+          </div>
           <div class="action_menu ">
             <ul>
               <li><i class="fas fa-user-circle text-black"></i> View profile</li>
@@ -470,7 +495,7 @@
           </div>
         </div>
         <!-- chat here -->
-        <div id="chats" class="chats pt-1 pe-2" data-mdb-perfect-scrollbar="true"
+        <div id="chats1" class="chats pt-1 pe-2" data-mdb-perfect-scrollbar="true"
           style="overflow-x: scroll; position: relative; height: 80vh">
 
           <div class="d-flex flex-row justify-content-start">
@@ -612,15 +637,15 @@
 
         </div>
         <!-- <div class="container-fluid" style="height:5vh;"> -->
-        <div class=" d-flex justify-content-start align-items-center  my-3 mx-0 ">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp" alt="avatar 3"
-            style="width: 40px; height: 100%;">
+        <div class=" d-flex justify-content-start align-items-center text-center my-3  mx-0 inpchats " style="bottom:0;">
+          <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp" alt="avatar 3"
+            style="width: 40px; height: 100%;"> -->
           <input autofocus type="text"
             class=" border border-light form-control form-control-lg bg-transparent text-white"
             id="exampleFormControlInput2" placeholder="Message" style="color: white !important;font-size:x-large;">
           <!-- <a class="ms-1  " href="#!"><i class=" text-white fas fa-paperclip"></i></a>
                   <a class="ms-3 " href="#!"><i class="fas fa-smile"></i></a> -->
-          <a class="" href="#!"><i class="p-2 ml-1 text-dark fa-2x  fas fa-paper-plane"></i></a>
+          <a class="" href="#!"><i class="p-2  text-dark fa-2x  fas fa-paper-plane"></i></a>
         </div>
         <!-- </div> -->
 
@@ -695,6 +720,7 @@
         // window.location.hash = '#chats';
         // window.scrollTo(0, document.querySelector("#chats").scrollTop);
         document.getElementById('chats').scrollTop =  document.getElementById('chats').scrollHeight
+        document.getElementById('chats1').scrollTop =  document.getElementById('chats').scrollHeight
         console.log("cool")
       }
   </script>
