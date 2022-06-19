@@ -54,5 +54,8 @@ def handlesignin(request):
         if user is not None :
             login(request, user)
             print(user)
-        return redirect('/')
+            return redirect('/')
+        else:
+            return HttpResponse("Something went wrong")
+    
 
