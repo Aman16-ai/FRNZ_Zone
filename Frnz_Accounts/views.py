@@ -16,7 +16,10 @@ def chat(request):
     return render(request,"chat2.html")
 
 def register(request):
-    return render(request,"register.html")
+    return render(request,"register1.html")
+
+def login(request):
+    return render(request,"signin.html")
 
 def handleSignup(request):
 
@@ -42,4 +45,14 @@ def handleSignup(request):
                 return HttpResponse("Registration failed")
         return HttpResponse("Something went wrong")
 
+
+def handlesignin(request):
+    if request.method=='POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user = authenticate(request, username = request.POST.get('username'), password = request.POST.get('password'))
+        if user is not None :
+            login(request, user)
+            print(user)
+        return redirect('/')
 
