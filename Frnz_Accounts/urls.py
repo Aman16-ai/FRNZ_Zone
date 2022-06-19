@@ -11,5 +11,7 @@ urlpatterns = [
     path('login',views.login_page,name="login"),
     path('handelSignin',views.handlesignin,name="handelLogin"),
     path('logout',views.logout_view,name="handelLogin"),
+    path('profile',views.profile_page,name="profile"),
+    path('editprofile',views.edit_profile,name="editprofile"),
     
 ]

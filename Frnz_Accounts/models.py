@@ -46,4 +46,9 @@ class user_profile(models.Model):
         users = user_profile.objects.filter(college = college)
         return users
 
+    @staticmethod
+    def getUsers(id):
+        users = User.objects.get(id = id)
+        return users
+
 
