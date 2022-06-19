@@ -19,6 +19,7 @@
 </head>
 
 <body onload="scrollDown()">
+  {% if user.is_authenticated %}
   <div class="container-fluid">
     <div class="row text-center">
       <div class="col-sm-4 col-md-4" style="height: 100vh;background: #7F7FD5;">
@@ -707,6 +708,23 @@
         display: none;
       }
     }
+    body{
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+
+    /* 50%{
+      opacity: 0.5;
+    } */
+    100% {
+      opacity: 1;
+    }
+  }
   </style>
   <script>
     $(document).ready(function () {
@@ -724,6 +742,8 @@
         console.log("cool")
       }
   </script>
+  {% endif %}
 </body>
+
 
 </html>

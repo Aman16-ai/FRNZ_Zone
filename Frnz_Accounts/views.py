@@ -4,21 +4,26 @@ from tkinter import E
 from urllib.request import HTTPRedirectHandler
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login ,logout
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.decorators import login_required
 from .models import user_profile
 # Create your views here.
 
 def home(request):
-    return render(request,"index.html")
+    # if request.user.is_authenticated:
+    #     return render(request,"chat2.html")
+    # else:
+        return render(request,"index.html")
 
+@login_required(login_url='/login')
 def chat(request):
     return render(request,"chat2.html")
 
 def register(request):
     return render(request,"register1.html")
 
-def login(request):
+def login_page(request):
     return render(request,"signin.html")
 
 def handleSignup(request):
@@ -50,6 +55,7 @@ def handlesignin(request):
     if request.method=='POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
+        print(username,password)
         user = authenticate(request, username = request.POST.get('username'), password = request.POST.get('password'))
         if user is not None :
             login(request, user)
@@ -57,5 +63,9 @@ def handlesignin(request):
             return redirect('/')
         else:
             return HttpResponse("Something went wrong")
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
     
 
