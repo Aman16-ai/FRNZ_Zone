@@ -13,5 +13,7 @@ urlpatterns = [
     path('logout',views.logout_view,name="handelLogin"),
     path('profile',views.profile_page,name="profile"),
     path('editprofile',views.edit_profile,name="editprofile"),
+    path('acceptreq/<int:senderid>',views.acceptreq,name="acceptreq"),
+    path('declinereq/<int:senderid>',views.declinereq,name="declinereq"),
     
 ]

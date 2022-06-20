@@ -1,8 +1,10 @@
 import email
+import datetime
 from operator import le
 from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -25,10 +27,11 @@ class user_profile(models.Model):
     want_synergy=models.BooleanField(blank=True, null=True)
     collage=models.CharField(max_length=200,blank=True, null=True)
     about = models.CharField(max_length=2000,blank=True, null=True)
+    friends=models.ManyToManyField("self",related_name="friends")
 
 
     def __str__(self):
-        return self.fullname
+        return self.user.username
     
     
     @staticmethod
@@ -50,5 +53,26 @@ class user_profile(models.Model):
     def getUsers(id):
         users = User.objects.get(id = id)
         return users
+
+class Friend_request(models.Model):
+    id = models.AutoField(primary_key=True)
+    sender_user=models.ForeignKey(user_profile,on_delete=models.CASCADE,related_name="sender")
+    receiver_user=models.ForeignKey(user_profile,on_delete=models.CASCADE,related_name="receiver")
+    timestamp=models.DateField(default=datetime.datetime.now())
+    status=models.BooleanField(default=False)
+
+    @staticmethod
+    def getReceiverFriendRequest(user):
+        return Friend_request.objects.filter(receiver_user=user)
+
+
+    # def getPendingRequest():
+
+
+    def __str__(self):
+        return f'{self.sender_user.user.username} sends to {self.receiver_user.user.username} ({self.status})'
+
+    
+
 
 
