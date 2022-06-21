@@ -23,13 +23,13 @@ def home(request):
 
 @login_required(login_url='/login')
 def chat(request):
-    return render(request,"chat.html")
+    return render(request,"chats/chat.html")
 
 def register(request):
-    return render(request,"register1.html")
+    return render(request,"accounts/register1.html")
 
 def login_page(request):
-    return render(request,"signin.html")
+    return render(request,"accounts/signin.html")
 
 def handleSignup(request):
 
@@ -100,7 +100,7 @@ def edit_profile(request):
             'friends_req':friendlist,
             'total_friends':len(total_friends)}
 
-    return render(request,"edit_profile.html",param)
+    return render(request,"user_personal/edit_profile.html",param)
 
 @login_required(login_url='/login')
 def acceptreq(request,senderid):
