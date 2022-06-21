@@ -2,24 +2,28 @@
 <html lang="en">
   <head>
     <title>edit_profile</title>
+    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/profile_page.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
   </head>
-  <body>
-    <div class="vh-100" style="background-color: #eee;">
+  <body style="background: #ffd89b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,#ffd89b , #19547b); 
+  background: linear-gradient(to right,#ffd89b , #19547b); ">
+    <div class="">
         <div class="container py-5">
           <div class="row">
             <div class="col">
-              <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+              <nav aria-label="breadcrumb" class="bg-transparent rounded-3 p-3 mb-4 border border-light">
                 <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a class="text-black" href="#">Home</a></li>
-                  <li class="breadcrumb-item"><a class="text-black" href="/profile">User</a></li>
-                  <li class="breadcrumb-item " aria-current="page">edit profile</li>
+                  <li class="breadcrumb-item"><a class="text-muted" href="/">Home</a></li>
+                  <!-- <li class="breadcrumb-item"><a class="text-black" href="/profile">User</a></li> -->
+                  <li class="breadcrumb-item  text-muted" aria-current="page">edit profile</li>
                 </ol>
               </nav>
             </div>
@@ -27,7 +31,7 @@
       
           <div class="row">
             <div class="col-lg-4">
-              <div class="card mb-4">
+              <div class="card gradient-custom mb-3">
                 <div class="card-body text-center">
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                     class="rounded-circle img-fluid" style="width: 150px;">
@@ -35,81 +39,76 @@
                   <p class="text-muted mb-1">Full Stack Developer</p>
                   <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
                   <div class="d-flex justify-content-center mb-2">
-                    <button type="button" class="btn btn-primary">Follow</button>
-                    <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                    <button type="button" class="btn btn-transparent btn-outline-success">Friends: {{ total_friends }}</button>
+                    <button type="button" class="btn btn-outline-light text-black ms-1">Friend request( {{ friendscount }} )</button>
                   </div>
                 </div>
               </div>
-              <!-- <div class="card mb-4 mb-lg-0">
+              <div class="card mb-4 mb-lg-0 bg-transparent">
                 <div class="card-body p-0">
-                  <ul class="list-group list-group-flush rounded-3">
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fas fa-globe fa-lg text-warning"></i>
-                      <p class="mb-0">https://mdbootstrap.com</p>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                      <p class="mb-0">mdbootstrap</p>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                      <p class="mb-0">@mdbootstrap</p>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                      <p class="mb-0">mdbootstrap</p>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                      <p class="mb-0">mdbootstrap</p>
-                    </li>
-                  </ul>
+                  <div class="row ">
+                    <div class="col-md-12">
+                      <h5 class="text-white text-center p-2" style="font-style: italic;"><u>About</u></h5>
+                    </div>
+                    <div class="col-12 text-center">
+                      <textarea type="text" class="bg-transparent  text-center border-0 text-muted" 
+                       style="width:80%;" >{{data.about}}</textarea>
+                    </div>
+                    <button class=" btn btn-success bg-transparent text-success border-0" style="right:0px;"><u>Save</u></button>
+                  </div>
                 </div>
-              </div> -->
+              </div>
             </div>
             <div class="col-lg-8">
-              <div class="card mb-4">
+              <div class="card mb-2 bg-transparent border-light ">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0">Full Name</p>
+                      <p class="mb-0 text-white">Full Name</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-muted mb-0">{{ data.fullname }}</p>
+                      <div class="row ">
+                        <div class="col-6">
+                          <p class="text-white mb-0">{{ data.fullname }}</p>
+                        </div>
+                        <div class="col-6">
+                          <small class="p-0 text-white" style="font-style:italic;">( Not editable )</small>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <hr>
+                  <hr class="text-white">
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0">Email</p>
+                      <p class="mb-0 text-white">Email</p>
                     </div>
                     <div class="col-sm-9">
                       <!-- <p class="text-muted mb-0">{{ data.email }}</p> -->
                       <input class="bg-transparent border-0" type="email" value="{{ user.email }}">
                     </div>
                   </div>
-                  <hr>
+                  <hr class="text-white">
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0">Collage</p>
+                      <p class="mb-0 text-white">Collage</p>
                     </div>
                     <div class="col-sm-9">
                       <input class="bg-transparent border-0" type="email" value="{{ data.collage }}">
                     </div>
                   </div>
-                  <hr>
+                  <hr class="text-white">
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0">Branch</p>
+                      <p class="mb-0 text-white">Branch</p>
                     </div>
                     <div class="col-sm-9">
                       <input class="bg-transparent border-0" type="email" value="{{ data.branch }}">
                     </div>
                   </div>
-                  <hr>
+                  <hr class="text-white">
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0">Gender</p>
+                      <p class="mb-0 text-white">Gender</p>
                     </div>
                     <div class="col-sm-9">
                       <!-- <p class="text-muted mb-0">{{ data.gender }}</p> -->
@@ -117,35 +116,52 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <button type="submit" class="btn btn-success btn-lg"> Save changes</button>
+                <div class="row mb-2">
+                  <div class="col">
+                    <button type="submit" class="btn btn-success btn-lg m-2 "> Save changes</button>
+                  </div>
                 </div>
-                <div class="col">
+              </div>
+              <!-- <div class="col">
                   <button type="submit" class="btn btn-danger btn-lg">{{ friendscount }}</button>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="card mb-4 mb-md-0">
-                    <div class="card-body">
-                      <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                      </p>
-                      <div class="row">
-                        <div class="col">
-                          {% for i in friends %}
-                          <p class="mb-1" style="font-size: .77rem;">{{ i.sender_user.user.username }}</p>
-                          <a class="btn btn-danger" href="/declinereq/{{ i.sender_user.id }}">decline</a>
-                          <a class="btn btn-success" href="/acceptreq/{{ i.sender_user.id }}">accept</a>
-                          {% endfor %}
+                </div> -->
+              {% if friendscount != 0 %}
+              <hr class="text-white">
+              <div class="row mt-0">
+                <div class="col-md-12 mt-0">
+                  <div class="card mb-4 mb-md-0 bg-transparent border-0">
+                    <div class="card-body my-3" style="background: #5f2c82;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #49a09d, #5f2c82);border-radius: 15px;
+                    ">
+                      <!-- <p class="mb-4 text-black text-center">Friend request's</p> -->
+                      <u><h3 class="mb-4 text-black" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">FRIEND REQUEST's </h3></u>
+                      <div class="row p-0 m-0">
+                        {% for i in friends_req %}
+                        <div class="col-md-6 text-center border border-light rounded-3 p-3 my-2  ">
+                          <div class="row py-2 mx-2">
+                            <div class="col-6">
+                              <div class="row">
+                                <div class="col-12">
+                                  <h5 class="mb-1 text-white" >{{ i.sender_user.user.username }}</h5>
+                                </div>
+                                <div class="col-12">
+                                  <small>{{ i.timestamp }}</small>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-3">
+                              <a class="" href="/declinereq/{{ i.sender_user.id }}"><i class="fa-solid fa-circle-xmark fa-3x text-danger"></i></a>
+                            </div>
+                            <div class="col-3">
+                              <a class="" href="/acceptreq/{{ i.sender_user.id }}"><i class="fas fa-circle-check fa-3x text-success"></i></a>
+                            </div>
+                          </div>
                           {% comment %} <a class="btn btn-danger" href="/declinereq">decline</a>
                           <a class="btn btn-success" href="/acceptreq/{{ friends.sender_user.user.username }}">accept</a> {% endcomment %}
                         </div>
+                        {% endfor %}
                       </div>
-                      <!-- <p class="mb-1" style="font-size: .77rem;">Web Design</p> -->
-
-                      
                     </div>
                   </div>
                 </div>
@@ -183,6 +199,7 @@
                   </div>
                 </div> -->
               </div>
+              {% endif %}
             </div>
           </div>
         </div>

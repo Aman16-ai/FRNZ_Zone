@@ -1,5 +1,7 @@
 from cmath import rect
+from ctypes import sizeof
 import email
+from itertools import count
 import re
 from tkinter import E
 from traceback import print_tb
@@ -71,35 +73,33 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
-def profile_page(request):
-    user1=user_profile.getUserProfileByUserId(request.user)
-    # user2=user_profile.getUsers(request.user)
-    
-    # user2=User.objects.get(id=user1.id)
-    # user2=user_profile.getUsers(user1.id)
-
-    # print(user2.username)
-    # print(user2)
-    print(user1.id,user1.fullname,request.user)
-    param={'data':user1,'name':request.user}
-    return render(request,"profile_page.html",param)
 
 @login_required(login_url='/login')
 def edit_profile(request):
+    # Fetching authenticated user1 
     user1=user_profile.getUserProfileByUserId(request.user)
     get_user=User.objects.get(username__contains=request.user)
     print(user1.user.email)
+
+    # Total friends objects ( wheter True or False )
     friend_req=Friend_request.getReceiverFriendRequest(user1)
+
+    # For total friends ( Accepted )
+    total_friends=user1.friends.all()
+    # print(total_friends)
+
+    # For total friend request pending ( Currently false )
     friendlist=[]
     for i in friend_req:
         if(i.status==False):
             friendlist.append(i)
-    # print(friendlist)
-    # print(friend_req)
 
-    print(user1.friends.all())
-    # print(get_user.email)
-    param={'data':user1,'user':get_user,'friendscount':len(friend_req),'friends':friendlist}
+    param={ 'data':user1,
+            'user':get_user,
+            'friendscount':len(friendlist),
+            'friends_req':friendlist,
+            'total_friends':len(total_friends)}
+
     return render(request,"edit_profile.html",param)
 
 @login_required(login_url='/login')
@@ -113,6 +113,7 @@ def acceptreq(request,senderid):
         if friend.sender_user == senderuser:
             # print(friend.sender_user)
             friend.status=True
+            # friend.delete()
             friend.save()
     return redirect('/editprofile')
 

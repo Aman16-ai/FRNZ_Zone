@@ -65,6 +65,9 @@ class Friend_request(models.Model):
     def getReceiverFriendRequest(user):
         return Friend_request.objects.filter(receiver_user=user)
 
+    @staticmethod
+    def getAcceptedFriendRequest(user):
+        return Friend_request.objects.filter(status=True)
 
     # def getPendingRequest():
 
