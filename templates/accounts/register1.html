@@ -14,69 +14,36 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
   </head>
   <body>
-    <div class="container">
-        <div class="row d-flex justify-content-center mt-5">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card py-3 px-4">
-                    <h1 class="text-white text-center">Let's Register</h1>
-                    <!-- <p class="text-center mb-3 mt-2">SE CONNECTER AVEC</p>
-                    <div class="row mx-auto ">
-                        <div class="col-4">
-                            <i class="fab fa-twitter"></i>
-                        </div>
-                        <div class="col-4">
-                            <i class="fab fa-facebook"></i>
-                        </div>
-                        <div class="col-4">
-                            <i class="fab fa-google"></i>
-                        </div>
-                    </div> -->
-                    <div class="division">
-                        <div class="row ">
-                            <div class="col-3 py-0"><div class="line l"></div></div>
-                            <div class="col-6 py-0"><span>START USING EMAIL</span></div>
-                            <div class="col-3 py-0"><div class="line r"></div></div>
+    <div class="container py-3 mt-5">
+        <div class="row d-flex justify-content-center ">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-7 py-3 " style="background: #191919;box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);border-radius: 15px;">
+            <form action="/handleSignup" method="post" class="box text-white py-2" onsubmit="return validationHandler()">
+                <h1 class="text-white py-3">Signup</h1>
+                <p class="text-white">Please enter your login and password!</p> 
+                {% csrf_token %}
+                <input   type="text" id="firstNametxt"   name="Firstname" placeholder="Firstname" />
+                <input  type="text" id="lastNametxt"   name="Lastname" placeholder="Lastname" />
+                <input  type="text" id="userNametxt"  name="Username" placeholder="Username" />
+                <input  type="email" id="email"   name="Email" placeholder="Email" />
+                <input  type="password" id="passwordtxt"  name="Password" placeholder="Password" />
+                <!-- <div class="row">
+                    <div class="col-md-6 col-12">
+                        <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
                         </div>
                     </div>
-                    <form action="/handleSignup" method="post" onsubmit="return validationHandler()">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <input class="form-control" type="text" id="firstNametxt" class="input p-2 m-2" name="Firstname" placeholder="Firstname" />
-                        </div>
-                         <div class="form-group">
-                            <input class="form-control" type="text" id="lastNametxt" class="input p-2 m-2" name="Lastname" placeholder="Lastname" />
-                        </div>
-                          <div class="form-group">
-                            <input class="form-control" type="text" id="userNametxt" class="input p-2 m-2" name="Username" placeholder="Username" />
-                        </div>
-                          <div class="form-group">
-                            <input class="form-control" type="email" class="input p-2 m-2" name="Email" placeholder="Email" />
-                        </div>
-                          <div class="form-group">
-                            <input class="form-control" type="password" id="passwordtxt" class="input p-2 m-2" name="Password" placeholder="Password" />
-                        </div>
-                          <div class="row">
-                              <div class="col-md-6 col-12">
-                                  <div class="form-group form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                  </div>
-                              </div>
-                              <div class="col-md-6 col-12 bn">Forgot password</div>
-                          </div>
-                          <div class="form-group mt-3">
-                              <button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Se connecter</small></button>
-                          </div>
-                    </form>
-                </div>
-            </div>
+                    <div class="col-md-6 col-12 bn">Forgot password</div>
+                </div> -->
+                <!-- <button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Signup</small></button> -->
+                <input type="submit" name="" value="Signup" href="#" />
+            </form>
+          </div>
         </div>
-    </div>
-
-    
+      </div>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="{% static 'js/register.js' %}"></script>
   </body>
