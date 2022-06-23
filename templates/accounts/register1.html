@@ -7,28 +7,85 @@
     <meta charset="utf-8">
 
     <!-- Bootstrap CSS v5.2.0-beta1 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
   </head>
+  <style>
+    .upload-btn-wrapper {
+  position: relative;
+  cursor: pointer !important;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  /* border: 2px solid gray; */
+  color: white;
+  /* background-color: white; */
+  cursor: crosshair !important;
+  /* padding: 8px 20px; */
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  cursor: pointer !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+  </style>
   <body>
     <div class="container py-3 mt-5">
-        <div class="row d-flex justify-content-center ">
-          <div class="col-12 col-md-8 col-lg-6 col-xl-7 py-3 " style="background: #191919;box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);border-radius: 15px;">
-            <form action="/handleSignup" method="post" class="box text-white py-2" onsubmit="return validationHandler()">
-                <h1 class="text-white py-3">Signup</h1>
-                <p class="text-white">Please enter your login and password!</p> 
+      <div class="row d-flex justify-content-center ">
+        <div class=" col-md-8 py-3 m-5" style="background: #191919;box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);border-radius: 15px;">
+            <form action="/handleSignup"
+                   method="post" 
+                   class="box text-white py-2"
+                   enctype="multipart/form-data"
+                   onsubmit="return validationHandler()">
+                <h1 class="text-white py-3" class="">Signup</h1>
+                <!-- <p class="text-white">Please enter your login and password!</p>  -->
                 {% csrf_token %}
-                <input   type="text" id="firstNametxt"   name="Firstname" placeholder="Firstname" />
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xl-6">
+                    <input   type="text" id="firstNametxt"   name="Firstname" placeholder="Firstname" />
+                    <input  type="text" id="lastNametxt"   name="Lastname" placeholder="Lastname" />
+                    <input  type="email" id="email"   name="Email" placeholder="Email" />
+                  </div>
+                  <div class="col-md-6 col-sm-6 border-left col-xl-6">
+                    <div class="upload-btn-wrapper">
+                      <button class="btn"><i class="fas fa-2x fa-image"></i></button>
+                      <input type="file" id="image" name="image" >
+                    </div>
+                    <input  type="text" id="userNametxt"  name="Username" placeholder="Username" />
+                    <input  type="password" id="passwordtxt"  name="Password" placeholder="Password" />
+                    <small class="p-0 m-0 mt-0">* remember this to signin</small>
+                  </div>
+                </div>
+                <!-- <input   type="text" id="firstNametxt"   name="Firstname" placeholder="Firstname" />
                 <input  type="text" id="lastNametxt"   name="Lastname" placeholder="Lastname" />
-                <input  type="text" id="userNametxt"  name="Username" placeholder="Username" />
-                <input  type="email" id="email"   name="Email" placeholder="Email" />
-                <input  type="password" id="passwordtxt"  name="Password" placeholder="Password" />
+                <input  type="text" id="userNametxt"  name="Username" placeholder="Username" /> -->
+                <!-- <input  type="email" id="email"   name="Email" placeholder="Email" />
+                <input  type="password" id="passwordtxt"  name="Password" placeholder="Password" /> -->
                 <!-- <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="form-group form-check">
@@ -39,12 +96,13 @@
                     <div class="col-md-6 col-12 bn">Forgot password</div>
                 </div> -->
                 <!-- <button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Signup</small></button> -->
-                <input type="submit" name="" value="Signup" href="#" />
+                <input class="py-3" type="submit" name="" value="Signup" href="#" />
             </form>
+            <small class="text-white" style="justify-content:right;">Already have an account ? <a href="/login">Click</a></small>
           </div>
         </div>
       </div>
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="{% static 'js/register.js' %}"></script>
+    <!-- <script src="{% static 'js/register.js' %}"></script> -->
   </body>
 </html>

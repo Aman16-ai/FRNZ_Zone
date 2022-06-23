@@ -34,6 +34,7 @@ def login_page(request):
 def handleSignup(request):
 
         if request.method == 'POST':
+            myfile = request.FILES['image']
             username = request.POST['Username']
             firstname = request.POST['Firstname']
             lastname = request.POST['Lastname']
@@ -45,7 +46,7 @@ def handleSignup(request):
                 user.first_name = firstname
                 user.last_name = lastname
                 if user is not None:
-                    userProfile = user_profile(user = user,fullname = firstname+" "+lastname)
+                    userProfile = user_profile(user = user,fullname = firstname+" "+lastname,image=myfile)
                     userProfile.save()
                     user.save()
                     return redirect("/")
@@ -79,6 +80,7 @@ def edit_profile(request):
     # Fetching authenticated user1 
     user1=user_profile.getUserProfileByUserId(request.user)
     get_user=User.objects.get(username__contains=request.user)
+    print(user1.image)
     print(user1.user.email)
 
     # Total friends objects ( wheter True or False )
