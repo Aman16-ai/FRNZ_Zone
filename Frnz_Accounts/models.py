@@ -7,6 +7,13 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 
 
+mood_choices=(
+    ('1','cool'),
+    ('2','Okayy'),
+    ('3','angry'),
+    ('4','busy'),
+    ('6','not_in_mood'),)
+
 # Create your models here.
 class Interset(models.Model):
     id = models.AutoField(primary_key=True)

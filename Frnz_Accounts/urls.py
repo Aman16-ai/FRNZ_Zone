@@ -16,6 +16,8 @@ urlpatterns = [
     path('editprofile',views.edit_profile,name="editprofile"),
     path('acceptreq/<int:senderid>',views.acceptreq,name="acceptreq"),
     path('declinereq/<int:senderid>',views.declinereq,name="declinereq"),
+    path('edit_req/<int:senderid>',views.edit_req,name="edit_req"),
+    path('change_about',views.change_about,name="change_about"),
     
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
