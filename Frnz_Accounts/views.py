@@ -16,9 +16,11 @@ from .models import Friend_request, Interset, user_profile
 # Create your views here.
 
 def home(request):
-    # if request.user.is_authenticated:
-    #     return render(request,"chat2.html")
-    # else:
+    if request.user.is_authenticated:
+        user1=user_profile.getUserProfileByUserId(request.user)
+        param={'data':user1}
+        return render(request,"index.html",param)
+    else:
         return render(request,"index.html")
 
 @login_required(login_url='/login')
@@ -98,6 +100,8 @@ def edit_profile(request):
     for i in friend_req:
         if(i.status==False):
             friendlist.append(i)
+
+    # print(friendlist[0].sender_user.image)
 
     param={ 'data':user1,
             'user':get_user,
