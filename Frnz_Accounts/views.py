@@ -25,6 +25,10 @@ def home(request):
 
 @login_required(login_url='/login')
 def chat(request):
+    return render(request,"chats/chat.html")
+
+@login_required(login_url='/login')
+def chat_duo(request):
     return render(request,"chats/chat2.html")
 
 def register(request):
@@ -143,8 +147,12 @@ def declinereq(request,senderid):
 def edit_req(request,senderid):
     if request.method=='POST':
         user1=user_profile.getUserProfileByUserId(request.user)
+        user=User.objects.get(username=request.user)
+        print("user is :" ,user)
         username=request.POST.get('username')
-        # password=request.POST.get('password')
+        # password=request.POST.get('password') frnz_username
+        gender=request.POST.get('gender')
+        frnz_username=request.POST.get('frnz_username')
         email=request.POST.get('email')
         collage=request.POST.get('collage')
         branch=request.POST.get('branch')
@@ -152,7 +160,12 @@ def edit_req(request,senderid):
         user1.user.email=email
         user1.branch=branch
         user1.collage=collage
+        user1.user.username=frnz_username
+        user.username=frnz_username
+        print(user1.user.username)
+        user1.gender=gender
         user1.save()
+        user.save()
         return redirect("editprofile")
     else:
         print("nope")

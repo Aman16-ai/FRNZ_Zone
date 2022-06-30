@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>edit_profile</title>
+    <title>{{ data.user.username }}&ensp;:&ensp;profile_page</title>
     {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -114,19 +114,31 @@ box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
                     </div>
                   </div>
                   <hr class="text-white">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0 text-white">Frnz ID</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input class="bg-transparent border-0" type="text" name="frnz_username" value="{{ data.user.username }}">
+                      <i class="fa-solid fa-marker"></i>
+                    </div>
+                  </div>
+                  <hr class="text-white">
                   <div class="row ">
                     <div class="col-sm-3">
                       <p class="mb-0 text-white">Gender</p>
                     </div>
                     <div class="col-sm-9">
-                      <p class="text-black mb-0">{{ data.gender }}</p>
+                      <!-- <p class="text-black mb-0">{{ data.gender }}</p> -->
+                      <input class="bg-transparent border-0" type="text" name="gender" value="{{ data.gender }}">
+                      <i class="fa-solid fa-marker"></i>
                       <!-- <p class="bg-transparent">{{ data.gender }} &emsp; (Not changable )</p> -->
                     </div>
                   </div>
                   <hr class="text-white">
                   <div class="row">
                     <div class="col-sm-3">
-                      <p class="mb-0 text-white">Collage</p>
+                      <p class="mb-0 text-white">College</p>
                     </div>
                     <div class="col-sm-9">
                       <input class="bg-transparent border-0" type="text" name="collage" value="{{ data.collage }}">
@@ -155,7 +167,7 @@ box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-success btn-lg m-2 "> Save changes</button>
+                <button type="submit" class="btn btn-success text-black  border-0 btn-lg m-2 " style="background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))"> Save changes</button>
               </form>
               </div>
               {% if friendscount != 0 %}
