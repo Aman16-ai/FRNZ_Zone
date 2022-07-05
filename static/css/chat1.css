@@ -85,3 +85,12 @@ body{
 		opacity: 1;
 	}
 }
+
+.contactlist{
+    box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 5px solid 0 6px 10px 0 rgba(0,0,0,0.2);
+    margin: 5px;
+}

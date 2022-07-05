@@ -25,11 +25,19 @@ def home(request):
 
 @login_required(login_url='/login')
 def chat(request):
-    return render(request,"chats/chat.html")
+    user1=user_profile.getUserProfileByUserId(request.user)
+    total_friends=user1.friends.all()
+    print(total_friends)
+    param={'all_friends':total_friends}
+    return render(request,"chats/chat.html",param)
 
 @login_required(login_url='/login')
 def chat_duo(request):
-    return render(request,"chats/chat2.html")
+    user1=user_profile.getUserProfileByUserId(request.user)
+    total_friends=user1.friends.all()
+    print(total_friends)
+    param={'all_friends':total_friends}
+    return render(request,"chats/chat2.html",param)
 
 def register(request):
     return render(request,"accounts/register1.html")
